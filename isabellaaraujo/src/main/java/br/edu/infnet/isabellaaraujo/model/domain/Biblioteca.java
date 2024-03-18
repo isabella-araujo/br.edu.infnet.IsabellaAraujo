@@ -2,13 +2,24 @@ package br.edu.infnet.isabellaaraujo.model.domain;
 
 import java.util.ArrayList;
 
-public class Livraria {
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Biblioteca {
 	private String nome;
     private Endereco endereco;
     private String cep;
-    public ArrayList<Estoque> estoque = new ArrayList<>();
+    
+    @OneToMany
+    public ArrayList<Livro> livros = new ArrayList<>();
+    
+    public Biblioteca() {
+    	
+    }
 
-    public Livraria(String nome, Endereco endereco) {
+    public Biblioteca(String nome, Endereco endereco) {
+    	this();
         this.nome = nome;
         this.endereco = endereco;
         cep = endereco.getCep();
@@ -16,7 +27,7 @@ public class Livraria {
     
     @Override
     public String toString() {
-    	return "Livraria: " + nome + "\n" + "Endereço: " + endereco;
+    	return "Biblioteca: " + nome + "\n" + "Endereço: " + endereco;
     }
     
 	public String getNome() {
@@ -35,11 +46,6 @@ public class Livraria {
 		this.endereco = endereco;
 	}
 	
-	public void exibirEstoque() {
-		for(Estoque estoque : estoque) {
-			System.out.println(estoque);
-		}
-	}
 
 	public String getCep() {
 		return cep;

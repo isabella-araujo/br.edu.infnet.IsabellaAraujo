@@ -10,6 +10,7 @@ public class Endereco {
     public Endereco() {
     	
     }
+    
     public Endereco(String logradouro, String bairro, String localidade, String uf, String cep) {
     	this();
     	this.logradouro = logradouro;

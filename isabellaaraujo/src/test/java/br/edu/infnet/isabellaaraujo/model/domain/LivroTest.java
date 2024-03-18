@@ -16,6 +16,8 @@ class LivroTest {
 	public final int anoPublicacao = 2014;
 	public final String isbn = "853253094X";
 	
+	public Biblioteca biblioteca;
+	
 	@BeforeEach
 	void setUp(){
 		livro = new Livro(titulo, autor, anoPublicacao, isbn);
@@ -25,7 +27,16 @@ class LivroTest {
 		livro.setAutor(autor);
 		livro.setAnoPublicacao(anoPublicacao);
 		livro.setIsbn(isbn);
+		livro.setBiblioteca(biblioteca);
 	}  
+	
+	@Test
+	void dadosIncorretos() {
+		livro.setTitulo("");
+		livro.setAutor("");
+		livro.setAnoPublicacao(1000);
+		livro.setIsbn("123654");
+	}
 	
 	@Test
 	void recuperarDados() {
@@ -34,6 +45,7 @@ class LivroTest {
 		assertEquals(autor, livro.getAutor());
 		assertEquals(anoPublicacao, livro.getAnoPublicacao());
 		assertEquals(isbn, livro.getIsbn());
+		assertEquals(biblioteca, livro.getBiblioteca());
 	}
 
 }

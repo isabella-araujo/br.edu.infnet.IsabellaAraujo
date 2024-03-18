@@ -23,7 +23,7 @@ public class EnderecoLoader implements ApplicationRunner {
 		enderecoService.Incluir(enderecoClient.obterPorCep("20050009"));
 		
 		enderecoService.Obter("22410001");
-
-        enderecoService.Excluir("20050009");
+        
+        System.out.println(enderecoService.ObterLista());
 	}
 }

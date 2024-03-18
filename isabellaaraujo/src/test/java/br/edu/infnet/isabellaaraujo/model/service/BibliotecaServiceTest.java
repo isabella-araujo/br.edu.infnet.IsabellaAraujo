@@ -9,12 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.edu.infnet.isabellaaraujo.model.domain.Endereco;
-import br.edu.infnet.isabellaaraujo.model.domain.Estoque;
-import br.edu.infnet.isabellaaraujo.model.domain.Livraria;
-import br.edu.infnet.isabellaaraujo.model.domain.Livro;
+import br.edu.infnet.isabellaaraujo.model.domain.Biblioteca;
 
 @SpringBootTest
-class EstoqueServiceTest {
+class BibliotecaServiceTest {
 	
 	private String logradouro = "Rua Visconde de Pirajá";
 	private String bairro = "Ipanema";
@@ -24,42 +22,38 @@ class EstoqueServiceTest {
     
     private Endereco endereco = new Endereco(logradouro, bairro, localidade, uf, cep);
 
-    private Livraria livraria = new Livraria("Livraria Leitura", endereco);
+	private BibliotecaService bibliotecaService = new BibliotecaService();
+
+    private Biblioteca biblioteca;
     
-    private Livro livro = new Livro("Você", "Caroline Kepnes", 2014, "853253094X");
-
-	private EstoqueService estoqueService = new EstoqueService();
-
-    private Estoque estoque;
+    private final String nome = "Biblioteca UM";
 
     @BeforeEach
     void setUp() {
-        estoque = new Estoque(livro, 30, livraria);
+        biblioteca = new Biblioteca(nome, endereco);
     }
 
     @Test
     void Inclusao() {
+        bibliotecaService.Incluir(biblioteca);
 
-        estoqueService.Incluir(estoque);
-
-        assertEquals(estoque, estoqueService.Obter(estoque.getIsbn()));
+        assertEquals(biblioteca, bibliotecaService.Obter(cep));
     }
 
     @Test
     void Exclusao() {
         Inclusao();
 
-        estoqueService.Excluir(estoque.getIsbn());
+        bibliotecaService.Excluir(cep);
 
-        assertNull(estoqueService.Obter(estoque.getIsbn()));
+        assertNull(bibliotecaService.Obter(cep));
     }
 
     @Test
     void RecuperacaoTotal() {
         Inclusao();
 
-        assertTrue(estoqueService.ObterLista().contains(estoque));
+        assertTrue(bibliotecaService.ObterLista().contains(biblioteca));
     }
-
 
 }

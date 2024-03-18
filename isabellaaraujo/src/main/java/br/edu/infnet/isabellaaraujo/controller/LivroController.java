@@ -1,6 +1,6 @@
 package br.edu.infnet.isabellaaraujo.controller;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,9 +31,9 @@ public class LivroController {
     	livroService.Excluir(isbn);
     }
 
-    @GetMapping(value = "/listar")
-    public Collection<Livro> ObterLista(){
-        return livroService.ObterLista();
+    @GetMapping(value = "{cep}/listar-livros")
+    public List<Livro> ObterLista(@PathVariable String cep){
+        return livroService.ObterLista(cep);
     }
 
     @GetMapping(value = "/{isbn}/listar")

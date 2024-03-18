@@ -11,34 +11,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.infnet.isabellaaraujo.model.domain.Livraria;
-import br.edu.infnet.isabellaaraujo.model.service.LivrariaService;
+import br.edu.infnet.isabellaaraujo.model.domain.Biblioteca;
+import br.edu.infnet.isabellaaraujo.model.service.BibliotecaService;
 
 @RestController
-@RequestMapping("/livraria")
-public class LivrariaController {
+@RequestMapping("/biblioteca")
+public class BibliotecaController {
 	
 	@Autowired
-	private LivrariaService livrariaService;
+	private BibliotecaService bibliotecaService;
 	
 	@PostMapping(value = "/incluir")
-	public void Incluir(@RequestBody Livraria livraria) {
-		livrariaService.Incluir(livraria);
+	public void Incluir(@RequestBody Biblioteca biblioteca) {
+		bibliotecaService.Incluir(biblioteca);
 	}
 	
 	@DeleteMapping(value = "/{cep}/excluir")
 	public void Excluir(@PathVariable String cep) {
-		livrariaService.Excluir(cep);
+		bibliotecaService.Excluir(cep);
 	}
 
 	@GetMapping(value = "/listar")
-    public Collection<Livraria> ObterLista(){
-        return livrariaService.ObterLista();
+    public Collection<Biblioteca> ObterLista(){
+        return bibliotecaService.ObterLista();
     }
 
 	@GetMapping(value = "/{cep}/listar")
-    public Livraria Obter(@PathVariable String cep) {
-        return livrariaService.Obter(cep);
+    public Biblioteca Obter(@PathVariable String cep) {
+        return bibliotecaService.Obter(cep);
     }
 	
 }

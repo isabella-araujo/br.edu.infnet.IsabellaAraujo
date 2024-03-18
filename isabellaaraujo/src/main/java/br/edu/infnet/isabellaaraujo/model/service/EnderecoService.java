@@ -34,7 +34,6 @@ public class EnderecoService {
     }
 
     public Endereco Obter(String cep) {
-    	Endereco endereco = enderecos.get(cep);
-        return endereco;
+        return enderecos.get(cep);
     }
 }
