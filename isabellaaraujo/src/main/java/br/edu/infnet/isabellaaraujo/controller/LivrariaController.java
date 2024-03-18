@@ -19,7 +19,7 @@ import br.edu.infnet.isabellaaraujo.model.service.LivrariaService;
 public class LivrariaController {
 	
 	@Autowired
-	public LivrariaService livrariaService;
+	private LivrariaService livrariaService;
 	
 	@PostMapping(value = "/incluir")
 	public void Incluir(@RequestBody Livraria livraria) {

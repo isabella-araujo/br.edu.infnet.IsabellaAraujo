@@ -18,6 +18,11 @@ public class Livro {
         this.isbn = isbn;
     }
     
+    @Override
+    public String toString() {
+        return "Título: " + titulo + "\n" + "Autor: " + autor + "\n" + "ISBN: " + isbn;
+    }
+    
     public String getTitulo() {
         return titulo;
     }
@@ -49,8 +54,4 @@ public class Livro {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    
-//    public String toString() {
-//        return "Título: " + titulo + "\n" + "Autor: " + autor + "\n" + "ISBN: " + isbn;
-//    }
 }

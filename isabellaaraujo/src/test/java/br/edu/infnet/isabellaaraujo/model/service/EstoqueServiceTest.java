@@ -42,16 +42,16 @@ class EstoqueServiceTest {
 
         estoqueService.Incluir(estoque);
 
-        assertEquals(estoque, estoqueService.Obter(estoque.getNomeLivro()));
+        assertEquals(estoque, estoqueService.Obter(estoque.getIsbn()));
     }
 
     @Test
     void Exclusao() {
         Inclusao();
 
-        estoqueService.Excluir(estoque.getNomeLivro());
+        estoqueService.Excluir(estoque.getIsbn());
 
-        assertNull(estoqueService.Obter(estoque.getNomeLivro()));
+        assertNull(estoqueService.Obter(estoque.getIsbn()));
     }
 
     @Test

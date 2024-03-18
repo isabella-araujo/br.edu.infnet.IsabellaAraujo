@@ -17,11 +17,11 @@ class LivroServiceTest {
 
     private Livro livro;
 
-    private final String titulo = "O senhor das moscas";
+    private final String isbn = "8579622875";
 
     @BeforeEach
     void setUp() {
-        livro = new Livro(titulo, "William Golding", 1954, "8579622875");
+        livro = new Livro("O senhor das moscas", "William Golding", 1954, isbn);
     }
 
     @Test
@@ -29,21 +29,23 @@ class LivroServiceTest {
 
         livroService.Incluir(livro);
 
-        assertEquals(livro, livroService.Obter(titulo));
+        assertEquals(livro, livroService.Obter(isbn));
     }
 
     @Test
     void Exclusao() {
         Inclusao();
 
-        livroService.Excluir(titulo);
+        livroService.Excluir(isbn);
 
-        assertNull(livroService.Obter(titulo));
+        assertNull(livroService.Obter(isbn));
     }
 
     @Test
     void RecuperacaoTotal() {
         Inclusao();
+        
+        System.out.println(livroService.Obter(isbn));
 
         assertTrue(livroService.ObterLista().contains(livro));
     }

@@ -10,10 +10,10 @@ import br.edu.infnet.isabellaaraujo.model.domain.Livro;
 
 @Service
 public class LivroService {
-	public Map<String, Livro> livros = new HashMap<String, Livro>();
+	private static Map<String, Livro> livros = new HashMap<String, Livro>();
 	
 	public void Incluir(Livro livro) {
-        livros.put(livro.getTitulo(), livro);
+        livros.put(livro.getIsbn(), livro);
     }
 
     public void Excluir(String isbn) {
@@ -25,6 +25,7 @@ public class LivroService {
     }
 
     public Livro Obter(String isbn) {
-        return livros.get(isbn);
+    	Livro livro = livros.get(isbn);
+        return livro;
     }
 }

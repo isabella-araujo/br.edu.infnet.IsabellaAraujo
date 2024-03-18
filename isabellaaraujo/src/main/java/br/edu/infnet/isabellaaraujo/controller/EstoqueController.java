@@ -11,33 +11,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.infnet.isabellaaraujo.model.domain.Livro;
-import br.edu.infnet.isabellaaraujo.model.service.LivroService;
+import br.edu.infnet.isabellaaraujo.model.domain.Estoque;
+import br.edu.infnet.isabellaaraujo.model.service.EstoqueService;
 
 @RestController
-@RequestMapping("/livro")
-public class LivroController {
-	
+@RequestMapping("/estoque")
+public class EstoqueController {
+
 	@Autowired
-	private LivroService livroService;
-	
+	private EstoqueService estoqueService;
+
 	@PostMapping(value = "/incluir")
-	public void incluir(@RequestBody Livro livro) {
-		livroService.Incluir(livro);
+	public void Incluir(@RequestBody Estoque estoque) {
+		estoqueService.Incluir(estoque);
 	}
 
 	@DeleteMapping(value = "/{isbn}/excluir")
-    public void Excluir(@PathVariable String isbn) {
-    	livroService.Excluir(isbn);
-    }
+	public void Excluir(@PathVariable String isbn) {
+		estoqueService.Excluir(isbn);
+	}
 
-    @GetMapping(value = "/listar")
-    public Collection<Livro> ObterLista(){
-        return livroService.ObterLista();
-    }
+	@GetMapping(value = "/listar")
+	public Collection<Estoque> ObterLista() {
+		return estoqueService.ObterLista();
+	}
 
-    @GetMapping(value = "/{isbn}/listar")
-    public Livro Obter(@PathVariable String isbn) {
-        return livroService.Obter(isbn);
-    }
+	@GetMapping(value = "/{isbn}/listar")
+	public Estoque Obter(@PathVariable String isbn) {
+		return estoqueService.Obter(isbn);
+	}
+
 }

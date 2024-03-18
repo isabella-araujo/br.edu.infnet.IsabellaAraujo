@@ -10,7 +10,7 @@ import br.edu.infnet.isabellaaraujo.model.domain.Livraria;
 
 @Service
 public class LivrariaService {
-	public Map<String, Livraria> livrarias = new HashMap<String, Livraria>();
+	private static Map<String, Livraria> livrarias = new HashMap<String, Livraria>();
 	
 	public void Incluir(Livraria livraria) {
         livrarias.put(livraria.getCep(), livraria);
@@ -25,6 +25,7 @@ public class LivrariaService {
     }
 
     public Livraria Obter(String cep) {
-        return livrarias.get(cep);
+    	Livraria livraria = livrarias.get(cep);
+        return livraria;
     }
 }

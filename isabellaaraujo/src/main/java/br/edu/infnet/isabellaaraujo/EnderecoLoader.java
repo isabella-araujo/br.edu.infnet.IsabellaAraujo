@@ -22,13 +22,8 @@ public class EnderecoLoader implements ApplicationRunner {
 		enderecoService.Incluir(enderecoClient.obterPorCep("20010150"));
 		enderecoService.Incluir(enderecoClient.obterPorCep("20050009"));
 		
-        System.out.println("----------------------------------------------------------");
-        System.out.println("Lista de Enderecos: ");
-		System.out.println(enderecoService.ObterLista());
-		
 		enderecoService.Obter("22410001");
 
         enderecoService.Excluir("20050009");
-        System.out.println(" - " + enderecoService.ObterLista());	
 	}
 }

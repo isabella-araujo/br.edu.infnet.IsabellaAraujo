@@ -33,14 +33,9 @@ public class EstoqueLoader implements ApplicationRunner {
 		estoqueService.Incluir(new Estoque(livro2, 30, livraria));
 		estoqueService.Incluir(new Estoque(livro3, 15, livraria));
 
-		System.out.println("----------------------------------------------------------");
-	    System.out.println("Lista de Estoque: ");
-	    System.out.println(" - " + estoqueService.ObterLista());
-
 	    estoqueService.Obter("8535926550");
 
 	    estoqueService.Excluir("8535926550");
-	    System.out.println(" - " + estoqueService.ObterLista());	
 	}
 
 }

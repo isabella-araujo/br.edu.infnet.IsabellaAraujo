@@ -38,6 +38,7 @@ class LivrariaTest {
 
 	@Test
 	void recuperarDados() {
+		System.out.print(livraria);
 		assertEquals(nomeLivraria, livraria.getNome());
 		assertEquals(enderecoLivraria, livraria.getEndereco());
 	}

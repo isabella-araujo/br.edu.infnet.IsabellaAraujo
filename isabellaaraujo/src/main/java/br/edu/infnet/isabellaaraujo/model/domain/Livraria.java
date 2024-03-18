@@ -14,9 +14,11 @@ public class Livraria {
         cep = endereco.getCep();
     }
     
+    @Override
     public String toString() {
     	return "Livraria: " + nome + "\n" + "Endereço: " + endereco;
     }
+    
 	public String getNome() {
 		return nome;
 	}

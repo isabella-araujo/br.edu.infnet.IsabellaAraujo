@@ -17,6 +17,7 @@ class EnderecoServiceTest {
 	private EnderecoService enderecoService = new EnderecoService();
 	
 	private Endereco endereco;
+	
 	private Endereco enderecoViaCep;
 	
 	private String logradouro = "Rua Visconde de Pirajá";
@@ -28,16 +29,18 @@ class EnderecoServiceTest {
 	@BeforeEach
 	void setUp() {
 		endereco = new Endereco(logradouro, bairro, localidade, uf, cep);
+		enderecoViaCep = enderecoService.obterPorCep(cep);
 	}
 	
-	@Test
-	void ObterPorCep() {
-		Endereco enderecoViaCep = enderecoService.obterPorCep(cep);
-	}
+//	@Test
+//	void ObterPorCep() {
+//		Endereco enderecoViaCep = enderecoService.obterPorCep(cep);
+//	}
 
 	@Test
 	void Inclusao() {
 		enderecoService.Incluir(endereco);
+		enderecoService.Incluir(enderecoViaCep);
 		
 		assertEquals(endereco, enderecoService.Obter(cep));
 	}

@@ -15,7 +15,7 @@ public class EnderecoService {
 	@Autowired
 	private IEnderecoClient enderecoClient;
 	
-	public Map<String, Endereco> enderecos = new HashMap<String, Endereco>();
+	private static Map<String, Endereco> enderecos = new HashMap<String, Endereco>();
 	
 	public Endereco obterPorCep(String cep) {
 		return enderecoClient.obterPorCep(cep);
@@ -34,6 +34,7 @@ public class EnderecoService {
     }
 
     public Endereco Obter(String cep) {
-        return enderecos.get(cep);
+    	Endereco endereco = enderecos.get(cep);
+        return endereco;
     }
 }
