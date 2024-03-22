@@ -3,6 +3,7 @@ package br.edu.infnet.isabellaaraujo.model.domain;
 import java.time.Year;
 
 public class Livro {
+
     private String titulo;
     private String autor;
     private int anoPublicacao;

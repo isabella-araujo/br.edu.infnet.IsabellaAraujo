@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class LivroTest {
 
 	public Livro livro;
-	
 	public final String titulo = "Você";
 	public final String autor = "Caroline Kepnes";
 	public final int anoPublicacao = 2014;
