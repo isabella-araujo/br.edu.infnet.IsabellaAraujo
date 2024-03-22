@@ -72,8 +72,6 @@ class LivroTest {
 		assertEquals("Disponível", livro.verificarDisponibilidade());
 	}
 
-	// teste de obter data de devolução
-
 	@Test
 	void obterPrazoDevolucao(){
 		assertEquals(7, livro.obterPrazoDeDevolucao());
