@@ -16,7 +16,7 @@ class LivroTest {
 	public final int anoPublicacao = 2014;
 	public final String isbn = "853253094X";
 	
-	public Biblioteca biblioteca;
+	public Biblioteca biblioteca = new Biblioteca();
 	
 	@BeforeEach
 	void setUp(){
@@ -46,6 +46,38 @@ class LivroTest {
 		assertEquals(anoPublicacao, livro.getAnoPublicacao());
 		assertEquals(isbn, livro.getIsbn());
 		assertEquals(biblioteca, livro.getBiblioteca());
+	}
+
+	@Test
+	void emprestarLivro(){
+		livro.emprestar();
+		assertEquals("Indisponível", livro.verificarDisponibilidade());
+	}
+
+	@Test
+	void livroNaoEstaDisponivel() {
+		emprestarLivro();
+		assertEquals("Indisponível", livro.verificarDisponibilidade());
+	}
+
+	@Test
+	void devolverLivro(){
+		emprestarLivro();
+		livro.devolver();
+		assertEquals("Disponível", livro.verificarDisponibilidade());
+	}
+
+	@Test
+	void livroEstaDisponivel() {
+		devolverLivro();
+		assertEquals("Disponível", livro.verificarDisponibilidade());
+	}
+
+	// teste de obter data de devolução
+
+	@Test
+	void obterPrazoDevolucao(){
+		assertEquals(7, livro.obterPrazoDeDevolucao());
 	}
 
 }

@@ -2,16 +2,11 @@ package br.edu.infnet.isabellaaraujo.model.domain;
 
 import java.util.ArrayList;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
-@Entity
 public class Biblioteca {
 	private String nome;
     private Endereco endereco;
     private String cep;
-    
-    @OneToMany
+
     public ArrayList<Livro> livros = new ArrayList<>();
     
     public Biblioteca() {

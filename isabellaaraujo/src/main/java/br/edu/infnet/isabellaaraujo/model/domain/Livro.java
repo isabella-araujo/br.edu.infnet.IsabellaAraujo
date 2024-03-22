@@ -2,17 +2,13 @@ package br.edu.infnet.isabellaaraujo.model.domain;
 
 import java.time.Year;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-
-@Entity
 public class Livro {
     private String titulo;
     private String autor;
     private int anoPublicacao;
     private String isbn;
-    
-    @ManyToOne
+    private boolean disponivel = true;
+    private final int prazoDevolucao = 7;
     private Biblioteca biblioteca;
     
     public Livro() {
@@ -41,9 +37,29 @@ public class Livro {
         return "Título: " + titulo + "\n" + "Autor: " + autor + "\n" + "ISBN: " + isbn;
     }
     
-    // metodos de emprestimo, disponibilidade etc
+    public String verificarDisponibilidade() {
+      if(disponivel){
+        return "Disponível";
+      } else {
+        return "Indisponível";
+      }
+    }
     
+    public void devolver() {
+      if (!disponivel) {
+        disponivel = true;
+      }
+    }
+
+    public void emprestar() {
+      if (disponivel){
+        disponivel = false;
+      }
+    }
     
+    public int obterPrazoDeDevolucao() {
+      return prazoDevolucao;
+    }
     
     // getters e setters
     

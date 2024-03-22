@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import br.edu.infnet.isabellaaraujo.model.domain.Endereco;
 import br.edu.infnet.isabellaaraujo.model.domain.Biblioteca;
+import br.edu.infnet.isabellaaraujo.model.domain.Endereco;
 
 @SpringBootTest
 class BibliotecaServiceTest {
