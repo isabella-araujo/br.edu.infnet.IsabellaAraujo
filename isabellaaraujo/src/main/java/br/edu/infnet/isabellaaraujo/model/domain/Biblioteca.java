@@ -1,13 +1,17 @@
 package br.edu.infnet.isabellaaraujo.model.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Biblioteca {
 	private String nome;
     private Endereco endereco;
     private String cep;
 
-    public ArrayList<Livro> livros = new ArrayList<>();
+	public static Map<String, Livro> livros = new HashMap<String, Livro>();
+
+    //public ArrayList<Livro> livros = new ArrayList<>();
     
     public Biblioteca() {
     	
@@ -40,7 +44,6 @@ public class Biblioteca {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
 
 	public String getCep() {
 		return cep;

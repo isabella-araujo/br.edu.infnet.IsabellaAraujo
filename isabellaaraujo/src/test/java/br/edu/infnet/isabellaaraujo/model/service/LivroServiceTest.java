@@ -18,47 +18,42 @@ class LivroServiceTest {
 	
 	@Autowired
 	private EnderecoService enderecoService = new EnderecoService();
+    private LivroService livroService = new LivroService();
+    
 	private Endereco endereco;
-
-	private LivroService livroService = new LivroService();
-
+    private Biblioteca biblioteca;
     private Livro livro;
     
-    private Biblioteca biblioteca;
-
     private final String isbn = "8579622875";
 
     @BeforeEach
     void setUp() {
     	endereco = enderecoService.obterPorCep("22410-001");
     	biblioteca = new Biblioteca("Biblioteca UM", endereco);
-        livro = new Livro("O senhor das moscas", "William Golding", 1954, isbn);
-        biblioteca.livros.add(livro);
+        livro = new Livro("O senhor das moscas", "William Golding", 1954, isbn, biblioteca);
     }
 
     @Test
     void Inclusao() {
+    	
+        livroService.Incluir(livro, biblioteca.getCep());
 
-        livroService.Incluir(livro);
-
-        assertEquals(livro, livroService.Obter(isbn));
+        assertEquals(livro, livroService.Obter(isbn, biblioteca.getCep()));
     }
 
     @Test
     void Exclusao() {
         Inclusao();
 
-        livroService.Excluir(isbn);
+        livroService.Excluir(isbn, biblioteca.getCep());
 
-        assertNull(livroService.Obter(isbn));
+        assertNull(livroService.Obter(isbn, biblioteca.getCep()));
     }
 
     @Test
     void RecuperacaoTotal() {
     	
         Inclusao();
-        
-        System.out.println(livroService.Obter(isbn));
 
         assertTrue(livroService.ObterLista("22410-001").contains(livro));
     }

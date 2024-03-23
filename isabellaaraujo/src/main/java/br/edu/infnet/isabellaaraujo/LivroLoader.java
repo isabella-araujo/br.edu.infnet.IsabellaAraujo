@@ -25,13 +25,10 @@ public class LivroLoader implements ApplicationRunner{
 		
 		Biblioteca biblioteca = new Biblioteca("Biblioteca UM", endereco1);
 		
-		livroService.Incluir(new Livro("Entrevista com o Vampiro", "Anne Rice", 1976, "8532531830", biblioteca));
-        livroService.Incluir(new Livro("Não me abandone jamais", "Kazuo Ishiguro", 2005, "8535926550", biblioteca));
-        livroService.Incluir(new Livro("Belas Maldições", "Neil Gaiman & Terry Pratchett", 1990, "6558380765", biblioteca));
+		livroService.Incluir(new Livro("Entrevista com o Vampiro", "Anne Rice", 2020, "8532531830", biblioteca), biblioteca.getCep());
+        livroService.Incluir(new Livro("Belas Maldições", "Neil Gaiman & Terry Pratchett", 2022, "6558380765", biblioteca), biblioteca.getCep());
 
-        //livroService.Excluir("6558380765");
-        
-        System.out.println(livroService.Obter("6558380765"));
+        //livroService.Excluir("6558380765", biblioteca.getCep());
 	}
 
 }

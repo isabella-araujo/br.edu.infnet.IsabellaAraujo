@@ -33,8 +33,8 @@ class BibliotecaTest {
 	void setUp(){
 		biblioteca.setNome(nomeBiblioteca);
 		biblioteca.setEndereco(enderecoBiblioteca);
-		biblioteca.livros.add(livro1);
-		biblioteca.livros.add(livro2);
+		//biblioteca.livros.add(livro1);
+		//biblioteca.livros.add(livro2);
 	}
 
 	@Test

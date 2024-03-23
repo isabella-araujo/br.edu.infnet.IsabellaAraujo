@@ -1,8 +1,6 @@
 package br.edu.infnet.isabellaaraujo.model.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
@@ -11,25 +9,26 @@ import br.edu.infnet.isabellaaraujo.model.domain.Livro;
 
 @Service
 public class LivroService {
-	private static Map<String, Livro> livros = new HashMap<String, Livro>();
+    BibliotecaService bibliotecaService = new BibliotecaService();
+    Biblioteca biblioteca;
 	
-	BibliotecaService bibliotecaService = new BibliotecaService();
-	
-	public void Incluir(Livro livro) {
-        livros.put(livro.getIsbn(), livro);
+	public void Incluir(Livro livro, String cep) {
+        biblioteca = bibliotecaService.Obter(cep);
+        Biblioteca.livros.put(livro.getIsbn(), livro);
     }
 
-    public void Excluir(String isbn) {
-        livros.remove(isbn);
+    public void Excluir(String isbn, String cep) {
+        biblioteca = bibliotecaService.Obter(cep);
+        Biblioteca.livros.remove(isbn);
     }
 
-    public List<Livro> ObterLista(String cep){
-    	Biblioteca biblioteca = bibliotecaService.Obter(cep);
-        return biblioteca.livros;
+    public Collection<Livro> ObterLista(String cep){
+        biblioteca = bibliotecaService.Obter(cep);
+        return Biblioteca.livros.values();
     }
 
-    public Livro Obter(String isbn) {
-    	Livro livro = livros.get(isbn);
-        return livro;
+    public Livro Obter(String isbn, String cep) {
+        biblioteca = bibliotecaService.Obter(cep);
+        return Biblioteca.livros.get(isbn);
     }
 }

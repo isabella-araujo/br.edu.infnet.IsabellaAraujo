@@ -1,7 +1,6 @@
 package br.edu.infnet.isabellaaraujo.controller;
 
-import java.util.List;
-
+import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,23 +20,23 @@ public class LivroController {
 	@Autowired
 	private LivroService livroService;
 	
-	@PostMapping(value = "/incluir")
-	public void incluir(@RequestBody Livro livro) {
-		livroService.Incluir(livro);
+	@PostMapping(value = "/{cep}/incluir")
+	public void incluir(@RequestBody Livro livro, @PathVariable String cep) {
+		livroService.Incluir(livro, cep);
 	}
 
-	@DeleteMapping(value = "/{isbn}/excluir")
-    public void Excluir(@PathVariable String isbn) {
-    	livroService.Excluir(isbn);
+	@DeleteMapping(value = "/{cep}/{isbn}/excluir")
+    public void Excluir(@PathVariable String isbn, String cep) {
+    	livroService.Excluir(isbn, cep);
     }
 
     @GetMapping(value = "{cep}/listar-livros")
-    public List<Livro> ObterLista(@PathVariable String cep){
+    public Collection<Livro> ObterLista(@PathVariable String cep){
         return livroService.ObterLista(cep);
     }
 
-    @GetMapping(value = "/{isbn}/listar")
-    public Livro Obter(@PathVariable String isbn) {
-        return livroService.Obter(isbn);
+    @GetMapping(value = "/{cep}/{isbn}/listar")
+    public Livro Obter(@PathVariable String isbn, @PathVariable String cep) {
+        return livroService.Obter(isbn, cep);
     }
 }

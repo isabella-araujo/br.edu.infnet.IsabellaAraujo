@@ -31,11 +31,6 @@ class EnderecoServiceTest {
 		endereco = new Endereco(logradouro, bairro, localidade, uf, cep);
 		enderecoViaCep = enderecoService.obterPorCep(cep);
 	}
-	
-//	@Test
-//	void ObterPorCep() {
-//		Endereco enderecoViaCep = enderecoService.obterPorCep(cep);
-//	}
 
 	@Test
 	void Inclusao() {
