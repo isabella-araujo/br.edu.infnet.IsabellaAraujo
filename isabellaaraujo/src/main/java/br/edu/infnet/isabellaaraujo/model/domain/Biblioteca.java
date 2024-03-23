@@ -10,8 +10,6 @@ public class Biblioteca {
     private String cep;
 
 	public static Map<String, Livro> livros = new HashMap<String, Livro>();
-
-    //public ArrayList<Livro> livros = new ArrayList<>();
     
     public Biblioteca() {
     	
